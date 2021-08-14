@@ -13,7 +13,7 @@ app.layout = html.Div([
     html.H4("Insert a value between 0 - 1000 below"),
     html.Div([
         "Input: ",
-        dcc.Input(id='my-input', value='initial value', type='text')
+        dcc.Input(id='my-input', value='', type='number', min=0, max=1000,)
     ]),
     html.Br(),
     html.Div(id='my-output'),
