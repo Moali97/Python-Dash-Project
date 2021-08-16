@@ -26,7 +26,7 @@ page_1_layout = html.Div([
     html.H4("Insert a value between 0 - 1000 below"),
     html.Div([
         "Input: ",
-        dcc.Input(id='my-input', value='', type='number', min=0, max=1000, )
+        dcc.Input(id='my-input', value='', type='number', min=0, max=1000, persistence=True, persistence_type='memory')
     ]),
     html.Br(),
     html.Div(id='my-output'),
@@ -65,7 +65,7 @@ page_2_layout = html.Div([
 @app.callback(dash.dependencies.Output('page-2-content', 'children'),
               [dash.dependencies.Input('page-2-radios', 'value')])
 def page_2_radios(value):
-    return 'You have selected "{}"'.format(value)
+    return 'You have selected {}'.format(value)
 
 
 # Update the index
@@ -78,7 +78,6 @@ def display_page(pathname):
         return page_2_layout
     else:
         return index_page
-
 
 
 if __name__ == '__main__':
