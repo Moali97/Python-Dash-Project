@@ -2,6 +2,7 @@ import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
+import datetime
 
 
 print(dcc.__version__)
@@ -10,6 +11,8 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True)
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+today = datetime.datetime.now()
+h = today.strftime("%H:%M:%S")
 
 colors = {
     'background': '#CBC3E3',
