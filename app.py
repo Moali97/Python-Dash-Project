@@ -1,11 +1,8 @@
 import dash
-from dash.dependencies import Input, Output, State
-import dash_table
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-import pandas as pd
-import plotly.express as px
 
 print(dcc.__version__)
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
@@ -39,7 +36,8 @@ page_1_layout = html.Div(
         html.H4("Insert a value between 0 - 1000 below"),
         html.Div([
             "Input: ",
-            dcc.Input(id='my-input', value='', type='number', min=0, max=1000, persistence=True,persistence_type='memory')
+            dcc.Input(id='my-input', value='', type='number', min=0, max=1000,
+                      persistence=True, persistence_type='memory')
         ]),
         html.Br(),
         html.Div(id='my-output'),
