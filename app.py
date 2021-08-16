@@ -6,6 +6,7 @@ import dash_html_components as html
 
 import pandas as pd
 import plotly.express as px
+
 print(dcc.__version__)
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 
@@ -13,18 +14,21 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+colors = {
+    'background': '#CBC3E3',
+}
+
 app.config.suppress_callback_exceptions = True
 
 index_page = html.Div(
-    # I added this id attribute
     id='index_page',
     children=[
-                dcc.Link('Go to Main Page', href='/page-1'),
-                html.Br(),
-                dcc.Link('Go to Report Page', href='/page-2'),
-            ],
-    # I added this style attribute
-    style={'display': 'block', 'line-height':'0', 'height': '0', 'overflow': 'hidden'}
+        dcc.Link('Go to Main Page', href='/page-1'),
+        html.Br(),
+        dcc.Link('Go to Report Page', href='/page-2'),
+    ],
+    style={'display': 'block', 'line-height': '0', 'height': '0', 'overflow': 'hidden',
+           'backgroundColor': colors['background']}
 )
 
 page_1_layout = html.Div(
@@ -35,7 +39,7 @@ page_1_layout = html.Div(
         html.H4("Insert a value between 0 - 1000 below"),
         html.Div([
             "Input: ",
-            dcc.Input(id='my-input', value='', type='number', min=0, max=1000, persistence=True, persistence_type='memory')
+            dcc.Input(id='my-input', value='', type='number', min=0, max=1000, persistence=True,persistence_type='memory')
         ]),
         html.Br(),
         html.Div(id='my-output'),
